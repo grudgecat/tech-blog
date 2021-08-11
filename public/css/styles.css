@@ -1,0 +1,25 @@
+.header-wrapper div {
+    background-color: forestgreen;
+}
+
+.nav-wrapper  {
+    background-color: forestgreen;
+}
+
+.logo-header {
+    background-color: forestgreen;
+    color: white;
+    margin:0px 0px 10px 0px;
+    padding: 0px 0px 10px 10px;
+    width: 100%;
+    height: 100%;
+    font-size: 36px;
+}
+
+.logo-header h4 {
+    margin-left: 20px;
+}
+
+.footer {
+    margin-top: 50px;
+}
