@@ -1,0 +1,9 @@
+[
+    {
+        "id": 1,
+        "postTitle":"Test POst 1",
+        "postText":"Stuff on a page",
+        "postDate":"03/06/2021",
+        "user_id":"1"
+    }
+]

@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Post } = require('../models');
-const { Comment } = require('./models');
-const { User } = require('./models');
+const { Comment } = require('../models');
+const { User } = require('../models');
 
 
 // '/' homeRoute is view for logged in, clicked HOME,
@@ -60,8 +60,12 @@ router.post('/login', async (req, res) => {
 router.get('/', async (req, res) => {
     try {
     const postData = await Post.findAll();
-    const posts = postData.map((post));
-    res.json(posts);
+    const posts = postData.map((post) => {
+      return post.get({plain: true})
+    });
+    // console.log('data check', posts); 
+    res.render('homepage', { posts});
+
     } catch (err) {
         res.status(400).json(err);
     }
