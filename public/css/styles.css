@@ -1,13 +1,13 @@
 .header-wrapper div {
-    background-color: forestgreen;
+    background-color: indigo;
 }
 
 .nav-wrapper  {
-    background-color: forestgreen;
+    background-color: indigo;
 }
 
 .logo-header {
-    background-color: forestgreen;
+    background-color: indigo;
     color: white;
     margin:0px 0px 10px 0px;
     padding: 0px 0px 10px 10px;
@@ -19,6 +19,17 @@
 .logo-header h4 {
     margin-left: 20px;
 }
+
+.card {
+    background-color: indigo;
+    color: white;
+}
+
+.blogTitle {
+    display: flex;
+    justify-content: space-between;
+}
+
 
 .footer {
     margin-top: 50px;

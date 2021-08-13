@@ -1,74 +1,96 @@
+const moment = require('moment'); 
 const router = require('express').Router();
+const withAuth = require('../utils/auth');
 const { Post } = require('../models');
 const { Comment } = require('../models');
 const { User } = require('../models');
 
-
-// '/' homeRoute is view for logged in, clicked HOME,
-// OR not logged in. Shows all posts/related comments of all users. View only.
-
-// /login shows login form (option to load sign up form)
-router.post('/login', async (req, res) => {
-    try {
-      // Find the user who matches the posted e-mail address
-      const userData = await User.findOne({ where: { email: req.body.email } });
-  
-      if (!userData) {
-        res
-          .status(400)
-          .json({ message: 'Incorrect email or password, please try again' });
-        return;
-      }
-  
-      // Verify the posted password with the password store in the database
-      const validPassword = await userData.checkPassword(req.body.password);
-  
-      if (!validPassword) {
-        res
-          .status(400)
-          .json({ message: 'Incorrect email or password, please try again' });
-        return;
-      }
-  
-      // Create session variables based on the logged in user
-      req.session.save(() => {
-        req.session.user_id = userData.id;
-        req.session.logged_in = true;
-        
-        res.json({ user: userData, message: 'You are now logged in!' });
-      });
-  
-    } catch (err) {
-      res.status(400).json(err);
-    }
-  });
-  
-  //logout form, destroy session
-  router.post('/logout', (req, res) => {
-    if (req.session.logged_in) {
-      // Remove the session variables
-      req.session.destroy(() => {
-        res.status(204).end();
-      });
-    } else {
-      res.status(404).end();
-    }
-  });
-  
+//NEED TO INCLUDE COMMENTS & RELATED USER DATA IN GET ALL...
 
 //HOME: show all posts, view only
 router.get('/', async (req, res) => {
     try {
-    const postData = await Post.findAll();
+    const postData = await Post.findAll({
+      include: [
+        {
+          model: Comment, 
+          attributes: ['commentDate', 'commentText']
+        }
+      ]
+    });
     const posts = postData.map((post) => {
-      return post.get({plain: true})
+      return post.get({plain: true}); 
     });
     // console.log('data check', posts); 
-    res.render('homepage', { posts});
+
+    res.render('homepage', {posts});
 
     } catch (err) {
         res.status(400).json(err);
     }
 });
+
+router.get('/post/:id', async (req, res) => {
+  try {
+    const postData = await Post.findByPk(req.params.id, {
+      include: [
+        {
+          model: Post,
+          attributes: ['postTitle', 'postText', 'postDate'],
+        },
+      ],
+    });
+
+    const post = postData.get({ plain: true });
+
+    res.render('post', {
+      ...post,
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// Use withAuth middleware to prevent access to route
+router.get('/dashboard', withAuth, async (req, res) => {
+  try {
+    // Find the logged in user based on the session ID
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+      include: [{ model: Post }],
+    });
+
+    const user = userData.get({ plain: true });
+
+    res.render('dashboard', {
+      ...user,
+      logged_in: true
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/login', (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  if (req.session.logged_in) {
+    res.redirect('/dashboard');
+    return;
+  }
+
+  res.render('login');
+});
+
+router.get('/signup', (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  if (req.session.logged_in) {
+    res.redirect('/dashboard');
+    return;
+  }
+
+  res.render('signup');
+});
+
 
 module.exports = router;

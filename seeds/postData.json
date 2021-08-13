@@ -1,9 +1,30 @@
 [
     {
         "id": 1,
-        "postTitle":"Test POst 1",
-        "postText":"Stuff on a page",
+        "postTitle":"Test Post 1",
+        "postText":"Stuff on a page. This is just stuff on a page, nothing to see here. These are not the posts you are looking for. Move along.",
         "postDate":"03/06/2021",
-        "user_id":"1"
+        "user_id": 1
+    },
+    {
+        "id": 2,
+        "postTitle":"Test Post 2",
+        "postText":"Stuff on a page. This is just more stuff on a page, still nothing to see here. These are not the posts you are looking for. Move along.",
+        "postDate":"03/09/2021",
+        "user_id": 1
+    },
+    {
+        "id": 3,
+        "postTitle":"Test Post 3",
+        "postText":"Stuff on a page. This is just more stuff on a page, still nothing to see here. These are not the posts you are looking for. Move along. My goodness, you don't listen do you?",
+        "postDate":"03/19/2021",
+        "user_id": 1
+    },
+    {
+        "id": 4,
+        "postTitle":"Test Post 4",
+        "postText":"This is Ivan. He doens't have much to say. Poor Ivan, he is so shy.",
+        "postDate":"03/09/2021",
+        "user_id": 2
     }
 ]
