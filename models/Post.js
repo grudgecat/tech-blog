@@ -21,7 +21,7 @@ Post.init(
       },
     postDate: {
         type: DataTypes.DATE,
-        allowNull: false,
+        allowNull: true,
     },
     // Store a reference of the `id` of the `Owner` that wrote the post
     user_id: {

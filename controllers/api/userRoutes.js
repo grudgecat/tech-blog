@@ -1,4 +1,3 @@
-const moment = require('moment'); 
 const router = require('express').Router();
 const withAuth = require('../../utils/auth');
 const { Post } = require('../../models');
@@ -6,10 +5,8 @@ const { Comment } = require('../../models');
 const { User } = require('../../models');
 
 
-// '/' homeRoute is view for logged in, clicked HOME,
-// OR not logged in. Shows all posts/related comments of all users. View only.
 
-// /login shows login form (option to load sign up form)
+//USER LOGIN, CREATE SESSION
 router.post('/login', async (req, res) => {
     try {
       // Find the user who matches the posted e-mail address
@@ -45,8 +42,9 @@ router.post('/login', async (req, res) => {
     }
   });
   
+  //USER SIGN UP, CREATE ACCOUNT, LOGIN USER
   router.post('/signup', async (req, res) => {
-    // try {
+    try {
       // Find the user who matches the posted e-mail address
       const userData = await User.findOne({ where: { email: req.body.email } });
   
@@ -56,7 +54,6 @@ router.post('/login', async (req, res) => {
           .json({ message: 'Email already exists' });
         return;
       }
-  
        
     const newUserData = await User.create(req.body);
 
@@ -68,12 +65,12 @@ router.post('/login', async (req, res) => {
         res.json({ user: newUserData, message: 'Successfully logged in.' });
       });
   
-    // } catch (err) {
-    //   res.status(400).json(err);
-    // }
+    } catch (err) {
+      res.status(400).json(err);
+    }
   });
 
-  //logout form, destroy session
+  //LOGOUT USER, DESTROY SESSION
   router.post('/logout', (req, res) => {
     if (req.session.logged_in) {
       // Remove the session variables

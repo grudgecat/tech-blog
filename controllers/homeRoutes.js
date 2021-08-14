@@ -5,7 +5,6 @@ const { Post } = require('../models');
 const { Comment } = require('../models');
 const { User } = require('../models');
 
-//NEED TO INCLUDE COMMENTS & RELATED USER DATA IN GET ALL...
 
 //HOME: show all posts, view only
 router.get('/', async (req, res) => {
@@ -52,7 +51,7 @@ router.get('/post/:id', async (req, res) => {
   }
 });
 
-// Use withAuth middleware to prevent access to route
+// once logged in, show user dashboard
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
