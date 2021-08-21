@@ -3,11 +3,17 @@
     <div class="col s12">
       <div class="card">
         <div class="card-content white-text">
-          <div class='blogTitle'><span class="card-title">{{postTitle}} </span><span class="card-title">{{ format_date postDate}}</span></div>
+          <div class='blogTitle'><span class="card-title">{{postTitle}}</span><span class="card-title">{{ format_date createdAt}}</span></div>
           <p>{{postText}}</p>
         </div>
         <div class="card-action">
-          <a href="#">Leave a Comment</a>
+          <h6>Comments</h6>
+           {{#each comments}} 
+           <p>    {{ comment_text }}   </p>
+           {{/each}}
+        </div>
+        <div class="card-action">
+          <a href='/comment/{{id}}'>Add a Comment</a>
         </div>
       </div>
     </div>

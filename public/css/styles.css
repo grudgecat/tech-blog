@@ -6,6 +6,10 @@
     background-color: indigo;
 }
 
+h6 {
+    color: yellow;
+}
+
 .logo-header {
     background-color: indigo;
     color: white;
@@ -30,6 +34,9 @@
     justify-content: space-between;
 }
 
+.card-title {
+    color: yellow;
+}
 
 .footer {
     margin-top: 50px;

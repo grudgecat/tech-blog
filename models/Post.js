@@ -19,10 +19,6 @@ Post.init(
         type: DataTypes.TEXT,
         allowNull: false,
       },
-    postDate: {
-        type: DataTypes.DATE,
-        allowNull: true,
-    },
     // Store a reference of the `id` of the `Owner` that wrote the post
     user_id: {
       type: DataTypes.INTEGER,
@@ -34,7 +30,7 @@ Post.init(
   },
   {
     sequelize,
-    timestamps: false,
+    timestamps: true,
     freezeTableName: true,
     underscored: true,
     modelName: 'post'

@@ -11,14 +11,10 @@ Comment.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    commentText: {
+    comment_text: {
         type: DataTypes.TEXT,
         allowNull: false,
       },
-    commentDate: {
-        type: DataTypes.DATE,
-        allowNull: false,
-    },
     // Store a reference of the `id` of the `Owner` that wrote the comment
     user_id: {
       type: DataTypes.INTEGER,
@@ -37,7 +33,7 @@ Comment.init(
   },
   {
     sequelize,
-    timestamps: false,
+    timestamps: true,
     freezeTableName: true,
     underscored: true,
     modelName: 'comment'

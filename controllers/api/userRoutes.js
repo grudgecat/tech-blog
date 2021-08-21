@@ -51,7 +51,7 @@ router.post('/login', async (req, res) => {
       if (userData) {
         res
           .status(400)
-          .json({ message: 'Email already exists' });
+          .json({ message: 'User already exists' });
         return;
       }
        

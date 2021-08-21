@@ -15,7 +15,6 @@ Post.belongsTo(User, {
 
 
 // A post can have many comments
-//VERIFY FK 
 Post.hasMany(Comment, {
   foreignKey: 'post_id',
   onDelete: 'SET NULL',
@@ -25,6 +24,7 @@ Comment.belongsTo(Post, {
     foreignKey: 'post_id',
 });
 
+// A user can have many comments
 User.hasMany(Comment, {
   foreignKey: 'user_id',
   onDelete: "SET NULL",
