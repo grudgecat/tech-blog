@@ -7,9 +7,10 @@ const deleteHandler = async function (event) {
       });
   
       if (response.ok) {
-        document.location.replace('/dashboard');
+        document.location.replace('/');
       } else {
-        alert('Unable to delete comment. You may only delete your own comments. Please verify you are logged in, and try again.');
+        // alert('Unable to delete comment. You may only delete your own comments. Please verify you are logged in, and try again.');
+        console.log('unable to delete comment');
       }
   };
     

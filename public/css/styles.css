@@ -38,6 +38,16 @@ h6 {
     color: yellow;
 }
 
+.commentLine {
+    display: flex;
+    justify-content: space-between;
+}
+
+.deleteLine {
+    display: inline;
+    justify-content: space-between;
+}
+
 .footer {
     margin-top: 50px;
 }

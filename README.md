@@ -13,8 +13,8 @@ Purpose: This project was created to explore MVC features, by creating a blog ap
 ![screen cap of Readme generator](/public/img/screencap.png)
 
 ## Project Links
-GitHub Source Code:  
-Heroku link:   
+GitHub Source Code:  https://github.com/grudgecat/tech-blog  
+Heroku link:   https://damp-thicket-20818.herokuapp.com/  
 
 ***
 ## Dependencies 

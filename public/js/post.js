@@ -7,7 +7,7 @@ const deleteHandler = async function (event) {
     });
 
     if (response.ok) {
-      document.location.replace('/dashboard');
+      document.location.replace('/');
     } else {
       alert('Unable to delete post. You may only delete your own posts. Please verify you are logged in, and try again.');
     }
