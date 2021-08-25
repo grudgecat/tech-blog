@@ -1,10 +1,6 @@
 //DELETE A POST
 const deleteHandler = async function (event) {
-  alert("delete handler for post called!");
-
     const id = this.getAttribute('data-id');
-
-    console.log("&&&&&&&&&&&id, ", `${id}`);
 
     const response = await fetch(`/api/posts/${id}`, {
       method: 'DELETE',
@@ -13,12 +9,10 @@ const deleteHandler = async function (event) {
     if (response.ok) {
       document.location.replace('/dashboard');
     } else {
-      alert('UNABLE TO DELETE POST');
+      alert('Unable to delete post. You may only delete your own posts. Please verify you are logged in, and try again.');
     }
 };
   
   document
     .querySelector("#deletepost")
     .addEventListener('click', deleteHandler);
-
-//deleted edit post sections

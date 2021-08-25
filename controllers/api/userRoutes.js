@@ -5,7 +5,6 @@ const { Comment } = require('../../models');
 const { User } = require('../../models');
 
 
-
 //USER LOGIN, CREATE SESSION
 router.post('/login', async (req, res) => {
     try {
@@ -18,8 +17,7 @@ router.post('/login', async (req, res) => {
           .json({ message: 'Incorrect email or password, please try again' });
         return;
       }
-  
-      // Verify the posted password with the password store in the database
+        // Verify the posted password with the password store in the database
       const validPassword = await userData.checkPassword(req.body.password);
   
       if (!validPassword) {

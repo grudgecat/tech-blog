@@ -1,26 +1,26 @@
 [
     {
         "id": 1,
-        "postTitle":"Test Post 1",
-        "postText":"Stuff on a page. This is just stuff on a page, nothing to see here. These are not the posts you are looking for. Move along.",
+        "postTitle":"Delete your old git branches",
+        "postText":"To keep your code clean, you can delete old branches after you have merged them by using git branch -d <branchname>.",
         "user_id": 1
     },
     {
         "id": 2,
-        "postTitle":"Test Post 2",
-        "postText":"Stuff on a page. This is just more stuff on a page, still nothing to see here. These are not the posts you are looking for. Move along.",
+        "postTitle":"Create a new git branch",
+        "postText":"To avoid uploading or merging code that doens't work or is no longer desired, you can create your own branches using the command git checkout - b <branchname>.",
         "user_id": 1
     },
     {
         "id": 3,
-        "postTitle":"Test Post 3",
-        "postText":"Stuff on a page. This is just more stuff on a page, still nothing to see here. These are not the posts you are looking for. Move along. My goodness, you don't listen do you?",
+        "postTitle":"Declare variables in your CSS files to make changes easier",
+        "postText":"You can declare variables in your stylesheets to make changes easier later by using the :root and --variablename:value key:value combination. Once declared, you can invoke in other styles using var(--variablename).",
         "user_id": 1
     },
     {
         "id": 4,
-        "postTitle":"Test Post 4",
-        "postText":"This is Ivan. He doens't have much to say. Poor Ivan, he is so shy.",
+        "postTitle":"Help with program debugging with Type Of",
+        "postText":"You can determine the data type of a variable by using the typeof(variablename) method.",
         "user_id": 2
     }
 ]

@@ -17,12 +17,11 @@ const postHandler = async (event) => {
       if (response.ok) {
         document.location.replace('/dashboard');
       } else {
-        alert('Failed to create post');
+        alert('Failed to create post. Please verify you are logged in, and try again.');
       }
     }
   };
   
-
   document
     .querySelector('.new-post-form')
     .addEventListener('submit', postHandler);

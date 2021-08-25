@@ -1,13 +1,9 @@
 const commentHandler = async (event) => {
     event.preventDefault();
   
-    // alert('called comment handler to add a new comment!');
-
     const comment_text = document.querySelector('#comment_text').value.trim();
-    console.log('COMMENT TEXT HERE, ', comment_text);
     let location = window.location.href;
     location = location.split('/').pop();
-    console.log('&&&&&&&&&& post id added here ', location);
     let post_id = location;
 
     if (comment_text) {
@@ -18,11 +14,10 @@ const commentHandler = async (event) => {
           'Content-Type': 'application/json',
         },
       });
-  
-      if (response.ok) {
+        if (response.ok) {
         document.location.replace('/dashboard');
       } else {
-        alert('Failed to add comment.');
+        alert('Failed to add comment. Please verify you are logged in, and try again.');
       }
     }
   };
